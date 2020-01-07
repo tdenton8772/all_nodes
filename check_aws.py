@@ -2,6 +2,8 @@
 
 import boto3
 import json
+import git
+import os
 client = boto3.client('ec2')
 
 instances = []
@@ -37,7 +39,15 @@ def write_nodes(students):
 		j_students = json.dumps(students, indent=4)
 		f.write(j_students)
 
+def commit_file():
+	repo = git.Repo(os.getcwd())
+	files = repo.git.diff(None, name_only=True)
+	for f in files.split('\n'):
+	    repo.git.add(f)
+	repo.git.commit('-m', 'test commit')
+
 if __name__ == "__main__":
 	ip_addresses = check_addresses()
 	students = create_students(ip_addresses)
 	write_nodes(students)
+	commit_file()
