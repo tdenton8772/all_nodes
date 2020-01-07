@@ -23,7 +23,7 @@ def check_addresses():
 	'Values': [VPC_ID]}])
 
   	for instance in running_instances:
-		ip_addresses.append(instance.private_ip_address)
+		ip_addresses.append(instance.public_ip_address)
 
 	return ip_addresses
 
