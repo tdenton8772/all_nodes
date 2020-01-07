@@ -8,7 +8,7 @@ client = boto3.client('ec2')
 
 instances = []
 VPC_ID = "vpc-0bd1dc1d2cae6b8a3"
-add_per_student = 4
+add_per_student = 2
 
 ip_addresses = []
 
