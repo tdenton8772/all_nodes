@@ -45,6 +45,7 @@ def commit_file():
 	for f in files.split('\n'):
 	    repo.git.add(f)
 	repo.git.commit('-m', 'test commit')
+	repo.git.push()
 
 if __name__ == "__main__":
 	ip_addresses = check_addresses()
